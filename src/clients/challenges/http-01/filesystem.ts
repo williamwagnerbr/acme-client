@@ -18,7 +18,7 @@ export interface FilesystemOptions {
 const writeFileAsync = promisify(fs.writeFile);
 const unlinkAsync = promisify(fs.unlink);
 
-const createHttpResponder = function (options: FilesystemOptions) : ChallengeResponder {
+export const createHttpResponder = function (options: FilesystemOptions) : ChallengeResponder {
   return {
     add: async function (authz: Authorization, challenge: Challenge, key: KeyAuthorization) {
       
