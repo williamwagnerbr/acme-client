@@ -1,7 +1,10 @@
 import {
-  Certificate,
-  CertificateInstaller,
-} from "../../base/acme-client";
+  Cert,
+  CsrDomains
+} from "acme-client";
+
+//import { ACM } from 'aws-sdk';
+import { CertificateInstaller } from '../definitions';
 
 export interface FilesystemOptions {
   directory: string;
@@ -11,7 +14,7 @@ export interface FilesystemOptions {
 
 export default function (options: FilesystemOptions) : CertificateInstaller {
   return {
-    install: function (names: Array<string>, certificate: Certificate) {
+    install: async function (names: CsrDomains, certificate: Cert) {
       // Code here
     }
   }

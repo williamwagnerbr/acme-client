@@ -1,7 +1,10 @@
 import {
-  Certificate,
-  CertificateInstaller,
-} from "../../base/acme-client";
+  Cert,
+  CsrDomains
+} from "acme-client";
+
+//import { ACM } from 'aws-sdk';
+import { CertificateInstaller } from '../definitions';
 
 export interface AcmOptions {
   awsAccessClientKeyId: string;
@@ -14,8 +17,8 @@ export interface AcmOptions {
 
 export default function (options: AcmOptions) : CertificateInstaller {
   return {
-    install: function (names: Array<string>, certificate: Certificate) {
-      // Code here
+    install: async function (names: CsrDomains, certificate: Cert) {
+      return false;
     }
   }
 }

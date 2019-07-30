@@ -1,9 +1,10 @@
 import {
   Challenge,
   Authorization,
-  KeyAuthorization,
-  ChallengeResponder
-} from "../../../base/acme-client";
+  KeyAuthorization
+} from "acme-client";
+
+import { ChallengeResponder } from '../../definitions';
 
 export interface CloudflareOptions {
   token: string;
@@ -12,10 +13,10 @@ export interface CloudflareOptions {
 
 export default function (options: CloudflareOptions) : ChallengeResponder {
   return {
-    add: function (authz: Authorization, challenge: Challenge, key: KeyAuthorization) {
+    add: async function (authz: Authorization, challenge: Challenge, key: KeyAuthorization) {
       // Code here
     },
-    remove: function (authz: Authorization, challenge: Challenge, key: KeyAuthorization) {
+    remove: async function (authz: Authorization, challenge: Challenge, key: KeyAuthorization) {
       // Code gere
     }
   }
