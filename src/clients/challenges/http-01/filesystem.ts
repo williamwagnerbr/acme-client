@@ -4,21 +4,40 @@ import {
   KeyAuthorization  
 } from "acme-client";
 
+import fs from 'fs';
+import { join } from 'path';
 import { ChallengeResponder } from '../../definitions';
+import { promisify } from "util";
 
 export interface FilesystemOptions {
   directory: string;
-  makeDir: boolean;
+  mkdirRecursive: boolean;
   chmod?: string;
 };
 
-export default function (options: FilesystemOptions) : ChallengeResponder {
+const writeFileAsync = promisify(fs.writeFile);
+const unlinkAsync = promisify(fs.unlink);
+
+const createHttpResponder = function (options: FilesystemOptions) : ChallengeResponder {
   return {
     add: async function (authz: Authorization, challenge: Challenge, key: KeyAuthorization) {
-      // Code here
+      
+      // TODO: Make dir if not exists
+
+      let name = join(options.directory, challenge.token);
+      await writeFileAsync(name, key);      
+      return 'ok';
     },
     remove: async function (authz: Authorization, challenge: Challenge, key: KeyAuthorization) {
-      // Code gere
+      try {
+        let name = join(options.directory, challenge.token);
+        await unlinkAsync(name);
+        return 'ok';
+      } catch (e) {
+        return 'fail';
+      }
     }
   }
-}
+};
+
+export default createHttpResponder;

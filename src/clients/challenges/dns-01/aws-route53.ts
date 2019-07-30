@@ -14,7 +14,7 @@ export interface Route53Options {
   tag?: Function;
 };
 
-export default function (options: Route53Options) : ChallengeResponder {
+export const createDnsResponder = function (options: Route53Options) : ChallengeResponder {
 
   let route53 = new Route53({
     accessKeyId: options.awsAccesstKeyId,
@@ -61,3 +61,5 @@ export default function (options: Route53Options) : ChallengeResponder {
     }
   }
 }
+
+export default createDnsResponder;

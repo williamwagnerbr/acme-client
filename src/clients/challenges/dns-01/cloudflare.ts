@@ -7,11 +7,11 @@ import {
 import { ChallengeResponder } from '../../definitions';
 
 export interface CloudflareOptions {
-  token: string;
-  appId?: string;
+  email: string;
+  key: string;
 };
 
-export default function (options: CloudflareOptions) : ChallengeResponder {
+export const createDnsResponder = function (options: CloudflareOptions) : ChallengeResponder {
   return {
     add: async function (authz: Authorization, challenge: Challenge, key: KeyAuthorization) {
       // Code here
@@ -21,3 +21,5 @@ export default function (options: CloudflareOptions) : ChallengeResponder {
     }
   }
 }
+
+export default createDnsResponder;

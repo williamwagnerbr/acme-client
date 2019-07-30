@@ -15,7 +15,7 @@ export interface FilesystemOptions {
 export default function (options: FilesystemOptions) : CertificateInstaller {
   return {
     install: async function (names: CsrDomains, certificate: Cert) {
-      // Code here
+      throw new Error('Not available yet.');
     }
   }
 }
