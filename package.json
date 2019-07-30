@@ -1,0 +1,34 @@
+{
+  "name": "better-acme-client",
+  "version": "0.1.0",
+  "description": "NodeJs ACME Client",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/williamwagnerbr/acme-client.git"
+  },
+  "keywords": [
+    "acme",
+    "client",
+    "letsencrypt",
+    "aws",
+    "cloudflare",
+    "dns",
+    "http"
+  ],
+  "author": "William Wagner <william.wagner.br@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/williamwagnerbr/acme-client/issues"
+  },
+  "homepage": "https://github.com/williamwagnerbr/acme-client#readme",
+  "dependencies": {
+    "acme-client": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.6.8"
+  }
+}
