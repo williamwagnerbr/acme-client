@@ -13,7 +13,7 @@ function default_1(options) {
     return {
         install: function (names, certificate) {
             return __awaiter(this, void 0, void 0, function* () {
-                // Code here
+                throw new Error('Not available yet.');
             });
         }
     };

@@ -7,20 +7,38 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const fs_1 = __importDefault(require("fs"));
+const path_1 = require("path");
+const util_1 = require("util");
 ;
-function default_1(options) {
+const writeFileAsync = util_1.promisify(fs_1.default.writeFile);
+const unlinkAsync = util_1.promisify(fs_1.default.unlink);
+exports.createHttpResponder = function (options) {
     return {
         add: function (authz, challenge, key) {
             return __awaiter(this, void 0, void 0, function* () {
-                // Code here
+                // TODO: Make dir if not exists
+                let name = path_1.join(options.directory, challenge.token);
+                yield writeFileAsync(name, key);
+                return 'ok';
             });
         },
         remove: function (authz, challenge, key) {
             return __awaiter(this, void 0, void 0, function* () {
-                // Code gere
+                try {
+                    let name = path_1.join(options.directory, challenge.token);
+                    yield unlinkAsync(name);
+                    return 'ok';
+                }
+                catch (e) {
+                    return 'fail';
+                }
             });
         }
     };
-}
-exports.default = default_1;
+};
+exports.default = exports.createHttpResponder;

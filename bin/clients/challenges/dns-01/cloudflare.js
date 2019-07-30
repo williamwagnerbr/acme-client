@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 ;
-function default_1(options) {
+exports.createDnsResponder = function (options) {
     return {
         add: function (authz, challenge, key) {
             return __awaiter(this, void 0, void 0, function* () {
@@ -22,5 +22,5 @@ function default_1(options) {
             });
         }
     };
-}
-exports.default = default_1;
+};
+exports.default = exports.createDnsResponder;

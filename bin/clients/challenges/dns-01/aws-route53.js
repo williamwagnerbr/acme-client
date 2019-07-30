@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const aws_sdk_1 = require("aws-sdk");
 ;
-function default_1(options) {
+exports.createDnsResponder = function (options) {
     let route53 = new aws_sdk_1.Route53({
         accessKeyId: options.awsAccesstKeyId,
         secretAccessKey: options.awsSecretAccessKey
@@ -53,5 +53,5 @@ function default_1(options) {
             });
         }
     };
-}
-exports.default = default_1;
+};
+exports.default = exports.createDnsResponder;
