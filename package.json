@@ -27,7 +27,7 @@
   "homepage": "https://github.com/williamwagnerbr/acme-client#readme",
   "dependencies": {
     "acme-client": "^3.0.0",
-    "aws-sdk": "^2.502.0",
+    "aws-sdk": "^2.814.0",
     "types-acme-client": "^0.1.8",
     "typescript": "^3.5.3"
   },
